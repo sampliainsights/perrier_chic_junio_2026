@@ -3224,13 +3224,13 @@
       const pillSlot = document.getElementById(container.id + '_pill');
       const bench = q.benchmark !== undefined ? q.benchmark : BENCH_SCORE;
       if (pillSlot) pillSlot.innerHTML = `<div class="score-avg-pill"><span class="score-avg-label">Puntuación media</span><span class="score-avg-val">${avg.toFixed(1)}</span>${benchTag(avg, bench)}</div>`;
-      const legendHTML = `<div style="display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:10px;">` +
+      const legendHTML = `<div style="display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;">` +
         scoreBands.map(b => `<div style="display:flex;align-items:center;gap:5px;">
           <span style="width:10px;height:10px;border-radius:3px;background:${b.color};flex-shrink:0;display:inline-block;"></span>
           <span style="font-size:10.5px;font-weight:600;color:var(--txt-2);">${b.label}</span>
           <span style="font-size:10px;color:var(--txt-3);font-weight:500;">(${b.range[0]}–${b.range[b.range.length-1]})</span>
         </div>`).join('') + `</div>`;
-      container.innerHTML = legendHTML + `<div class="score-summary"><div class="chart-wrap h160"><canvas id="${chartId}"></canvas></div></div><div class="score-badges">${badgesHTML}</div>`;
+      container.innerHTML = `<div class="score-badges" style="margin-bottom:12px;">${badgesHTML}</div><div class="score-summary"><div class="chart-wrap h160"><canvas id="${chartId}"></canvas></div></div>` + legendHTML;
       const labels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
       const data = labels.map(l => freq[parseInt(l)] || 0);
       const colors = labels.map(l => {
